@@ -1,11 +1,6 @@
 import React, { useState } from "react"
 import styles from "./Toolbar.module.scss"
 import Image from "next/image"
-import eraser from "/public/eraser.svg"
-import circle from "/public/circle.svg"
-import rect from "/public/rect.svg"
-import palette from "/public/palette.svg"
-import line from "/public/line.svg"
 import Brush from "@/tools/Brush"
 import canvasState from "@/store/canvasState"
 import Tool from "@/tools/Tool"
@@ -14,10 +9,9 @@ import Rect from "@/tools/Rect"
 import { observer } from "mobx-react-lite"
 import Circle from "@/tools/Circle"
 import Eraser from "@/tools/Eraser"
+import Line from "@/tools/Line"
 
-// TODO: Line
-
-const tools: any[] = [Brush, Rect, Circle, Eraser]
+const tools: any[] = [Brush, Rect, Circle, Eraser, Line]
 type tool = typeof Tool
 const Toolbar = observer(() => {
   return (
