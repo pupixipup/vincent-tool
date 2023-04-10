@@ -1,4 +1,4 @@
-@import '@/styles/variables.scss';
+@import "@/styles/variables.scss";
 
 .navbar {
   height: 40px;
@@ -9,4 +9,15 @@
   width: 100%;
   box-shadow: 0 4px 5px gray;
   top: 40px;
+}
+
+.line_width_label {
+  color: black;
+  margin-left: 20px;
+  margin-right: 5px;
+  font-family: "Arial";
+}
+
+.line_width_input {
+  padding: 5px;
 }
