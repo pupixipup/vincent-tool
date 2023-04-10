@@ -13,10 +13,11 @@ import toolState from "@/store/toolState"
 import Rect from "@/tools/Rect"
 import { observer } from "mobx-react-lite"
 import Circle from "@/tools/Circle"
+import Eraser from "@/tools/Eraser"
 
-// TODO: Circle, Eraser, Line
+// TODO: Line
 
-const tools: any[] = [Brush, Rect, Circle]
+const tools: any[] = [Brush, Rect, Circle, Eraser]
 type tool = typeof Tool
 const Toolbar = observer(() => {
   return (
