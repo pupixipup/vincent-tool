@@ -1,7 +1,8 @@
-import { DragEvent } from "react"
 import Tool from "./Tool"
-
+import brush from "/public/brush.svg"
 export default class Brush extends Tool {
+  static toolName = "Brush"
+  static icon = brush
   mouseDown: boolean = false
   constructor(canvas: HTMLCanvasElement) {
     super(canvas)
@@ -27,5 +28,8 @@ export default class Brush extends Tool {
       this.draw(x, y)
     }
   }
-  draw(x: number, y: number) {}
+  draw(x: number, y: number) {
+    this.ctx.lineTo(x, y)
+    this.ctx.stroke()
+  }
 }

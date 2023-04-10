@@ -1,14 +1,15 @@
-import { makeAutoObservable } from "mobx";
+import Tool from "@/tools/Tool"
+import { makeAutoObservable } from "mobx"
 
 class ToolState {
-  tool: string | null  = null;
+  tool: Tool | null = null
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this)
   }
-  setTool(tool: string) {
-    this.tool = tool; 
+  setTool(tool: Tool) {
+    this.tool = tool
   }
 }
 
-const instance = new ToolState();
-export default instance;
+const instance = new ToolState()
+export default instance

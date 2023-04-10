@@ -1,33 +1,41 @@
-import React from 'react'
-import styles from './Toolbar.module.scss'
-import Image from 'next/image';
-import brush from '/public/brush.svg';
-import eraser from '/public/eraser.svg';
-import circle from '/public/circle.svg';
-import rect from '/public/rect.svg';
-import palette from '/public/palette.svg';
-import line from '/public/line.svg';
-import { Tool } from '@/models/Tool';
+import React from "react"
+import styles from "./Toolbar.module.scss"
+import Image from "next/image"
+import eraser from "/public/eraser.svg"
+import circle from "/public/circle.svg"
+import rect from "/public/rect.svg"
+import palette from "/public/palette.svg"
+import line from "/public/line.svg"
+import Brush from "@/tools/Brush"
+import canvasState from "@/store/canvasState"
+import Tool from "@/tools/Tool"
+import toolState from "@/store/toolState"
+import Rect from "@/tools/Rect"
 
-const tools: Tool[] = [
-  { name: 'Brush tool', icon: brush},
-  { name: 'Eraser tool', icon: eraser},
-  { name: 'Circle tool', icon: circle},
-  { name: 'Rectangle tool', icon: rect},
-  { name: 'Palette tool', icon: palette},
-  { name: 'Line tool', icon: line},
-];
-
+const tools: any[] = [Brush, Rect]
+type tool = typeof Tool
 function Toolbar() {
   return (
     <div className={styles.toolbar}>
-        {tools.map((tool) => {
-          return (
-            <button key={tool.name} className={styles.toolbar_btn}>
-            <Image src={tool.icon} className={styles.toolbar_btn_icon} alt={tool.name} />
-      </button>
-          )
-        })}
+      {tools.map((Tool: tool) => {
+        return (
+          <button
+            onClick={() => {
+              if (canvasState.canvas) {
+                toolState.setTool(new Tool(canvasState.canvas))
+              }
+            }}
+            key={Tool.toolName}
+            className={styles.toolbar_btn}
+          >
+            <Image
+              src={Tool.icon}
+              className={styles.toolbar_btn_icon}
+              alt={Tool.toolName}
+            />
+          </button>
+        )
+      })}
     </div>
   )
 }
