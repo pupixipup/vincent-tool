@@ -9,6 +9,7 @@ export default class Rect extends Tool {
   mouseDown: boolean = false
   constructor(canvas: HTMLCanvasElement) {
     super(canvas)
+    this.toolName = Rect.toolName
     this.listen()
   }
   listen() {

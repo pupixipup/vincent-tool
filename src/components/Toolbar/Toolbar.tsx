@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styles from "./Toolbar.module.scss"
 import Image from "next/image"
 import eraser from "/public/eraser.svg"
@@ -11,13 +11,18 @@ import canvasState from "@/store/canvasState"
 import Tool from "@/tools/Tool"
 import toolState from "@/store/toolState"
 import Rect from "@/tools/Rect"
+import { observer } from "mobx-react-lite"
 
 const tools: any[] = [Brush, Rect]
 type tool = typeof Tool
-function Toolbar() {
+const Toolbar = observer(() => {
   return (
     <div className={styles.toolbar}>
       {tools.map((Tool: tool) => {
+        const activeClass =
+          toolState.tool?.toolName === Tool.toolName
+            ? styles.toolbar_btn_icon + " " + styles.active
+            : styles.toolbar_btn_icon
         return (
           <button
             onClick={() => {
@@ -30,7 +35,7 @@ function Toolbar() {
           >
             <Image
               src={Tool.icon}
-              className={styles.toolbar_btn_icon}
+              className={activeClass}
               alt={Tool.toolName}
             />
           </button>
@@ -38,6 +43,6 @@ function Toolbar() {
       })}
     </div>
   )
-}
+})
 
 export default Toolbar

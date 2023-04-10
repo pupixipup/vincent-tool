@@ -6,6 +6,7 @@ export default class Brush extends Tool {
   mouseDown: boolean = false
   constructor(canvas: HTMLCanvasElement) {
     super(canvas)
+    this.toolName = Brush.toolName
     this.listen()
   }
   listen() {
