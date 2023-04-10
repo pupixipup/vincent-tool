@@ -13,6 +13,8 @@ import toolState from "@/store/toolState"
 import Rect from "@/tools/Rect"
 import { observer } from "mobx-react-lite"
 
+// TODO: Circle, Eraser, Line
+
 const tools: any[] = [Brush, Rect]
 type tool = typeof Tool
 const Toolbar = observer(() => {
